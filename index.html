@@ -1,0 +1,719 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="PontNordSudBelgique — ASBL : soutien à l’entrepreneuriat de la diaspora subsaharienne, pont Nord–Sud, sensibilisation aux dangers de la migration clandestine." />
+  <title>PontNordSudBelgique — ASBL</title>
+
+  <!-- Police (optionnel). Si tu veux 100% offline, supprime ces 3 lignes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#0f1a33;
+      --panel2:#0c172e;
+      --text:#e9eefc;
+      --muted:#b9c3e6;
+      --line:rgba(255,255,255,.10);
+      --brand:#6ee7ff;
+      --brand2:#a78bfa;
+      --shadow: 0 14px 40px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1120px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1100px 600px at 12% -10%, rgba(110,231,255,.18), transparent 60%),
+        radial-gradient(900px 520px at 90% 10%, rgba(167,139,250,.16), transparent 55%),
+        radial-gradient(1200px 700px at 50% 120%, rgba(110,231,255,.10), transparent 60%),
+        var(--bg);
+      line-height:1.55;
+    }
+
+    a{color:inherit; text-decoration:none}
+    a:hover{opacity:.92}
+    .container{max-width:var(--max); margin:0 auto; padding:0 20px}
+
+    /* Header */
+    .site-header{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.62);
+      border-bottom: 1px solid var(--line);
+    }
+    .header-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:18px;
+    }
+    .brand{display:flex; align-items:center; gap:12px; min-width:240px}
+    .brand-logo{
+      width:44px; height:44px; object-fit:contain;
+      border-radius:12px;
+      background: rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      padding:6px;
+    }
+    .brand-name{font-weight:800; letter-spacing:.2px}
+    .brand-tagline{font-size:.86rem; color:var(--muted)}
+
+    .nav{display:flex; align-items:center; gap:12px}
+    .nav-menu{
+      display:flex; align-items:center; gap:16px;
+      list-style:none; padding:0; margin:0;
+    }
+    .nav-menu a{
+      display:inline-block;
+      padding:10px 12px;
+      border-radius:12px;
+      color:var(--muted);
+      border:1px solid transparent;
+    }
+    .nav-menu a:hover{
+      color:var(--text);
+      border-color:var(--line);
+      background: rgba(255,255,255,.04);
+    }
+
+    .nav-toggle{
+      display:none;
+      width:44px; height:44px;
+      border-radius:14px;
+      background: rgba(255,255,255,.05);
+      border:1px solid var(--line);
+      cursor:pointer;
+      align-items:center;
+      justify-content:center;
+      gap:5px;
+      padding:0;
+    }
+    .nav-toggle-bar{
+      display:block;
+      width:18px; height:2px;
+      background: var(--text);
+      opacity:.9;
+      border-radius:99px;
+    }
+    .sr-only{
+      position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+      overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+    }
+
+    /* Hero */
+    .hero{padding:44px 0 18px}
+    .hero-inner{
+      display:grid;
+      grid-template-columns: 1.25fr .85fr;
+      gap:22px;
+      align-items:start;
+    }
+    h1{
+      margin:0 0 12px;
+      font-size: clamp(1.9rem, 3.4vw, 3.0rem);
+      line-height:1.08;
+      letter-spacing:-.02em;
+    }
+    .lead{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:1.05rem;
+      max-width: 62ch;
+    }
+
+    .hero-actions{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin: 6px 0 14px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      border-radius: 14px;
+      padding: 11px 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      font-weight: 700;
+      letter-spacing:.2px;
+      cursor:pointer;
+      transition: transform .08s ease, background .2s ease, border-color .2s ease;
+      user-select:none;
+    }
+    .btn:hover{background: rgba(255,255,255,.06)}
+    .btn:active{transform: translateY(1px)}
+    .btn.primary{
+      border-color: rgba(110,231,255,.35);
+      background: linear-gradient(135deg, rgba(110,231,255,.18), rgba(167,139,250,.14));
+    }
+    .btn.ghost{background: transparent}
+
+    .hero-badges{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    .badge{
+      font-size:.86rem;
+      color:var(--muted);
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+
+    .panel{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hero-card{padding:18px}
+    .card-title{margin:2px 0 12px; font-size:1.05rem}
+    .kv{margin:0; display:grid; gap:12px}
+    .kv > div{
+      padding:10px 12px;
+      border-radius: 14px;
+      background: rgba(0,0,0,.18);
+      border: 1px solid rgba(255,255,255,.06);
+    }
+    .kv dt{font-size:.82rem; color:var(--muted); margin-bottom:4px}
+    .kv dd{margin:0; font-weight:700}
+    .card-note{
+      margin-top:12px;
+      padding:10px 12px;
+      border-radius: 14px;
+      border:1px dashed rgba(110,231,255,.35);
+      color: var(--muted);
+      background: rgba(110,231,255,.06);
+      font-size:.92rem;
+    }
+
+    /* Sections */
+    .section{padding:46px 0}
+    .section.alt{
+      background: linear-gradient(180deg, rgba(255,255,255,.02), transparent);
+      border-top: 1px solid rgba(255,255,255,.06);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .section-head{
+      margin-bottom: 18px;
+      display:flex; align-items:flex-end; justify-content:space-between; gap:14px;
+      flex-wrap:wrap;
+    }
+    .section-head h2{
+      margin:0;
+      font-size:1.6rem;
+      letter-spacing:-.01em;
+    }
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      max-width: 70ch;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:14px;
+    }
+    .grid-2{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap:14px;
+    }
+
+    .panel.pad{padding:16px}
+    .panel h3{margin:0 0 10px; font-size:1.05rem}
+    .panel p{margin:0 0 12px; color:var(--muted)}
+    .bullets{
+      margin:0;
+      padding-left: 18px;
+      color: var(--text);
+      opacity:.95;
+    }
+    .bullets li{margin:6px 0}
+
+    .callout{
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(167,139,250,.22);
+      background: rgba(167,139,250,.08);
+      color: var(--muted);
+    }
+    .callout strong{color: var(--text)}
+
+    /* Membres */
+    .member{
+      display:flex; gap:14px;
+      padding:16px;
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      box-shadow: var(--shadow);
+    }
+    .avatar{
+      width:56px; height:56px;
+      border-radius: 16px;
+      display:flex; align-items:center; justify-content:center;
+      font-weight:800;
+      letter-spacing:.5px;
+      background: linear-gradient(135deg, rgba(110,231,255,.18), rgba(167,139,250,.16));
+      border: 1px solid rgba(255,255,255,.10);
+      flex: 0 0 auto;
+    }
+    .member-body h3{margin:0 0 2px}
+    .role{margin:0 0 10px; color:var(--muted); font-weight:600}
+    .member-links{display:flex; align-items:center; gap:8px; color:var(--muted); font-weight:600}
+    .dot{opacity:.6}
+
+    /* Contact */
+    .grid-contact{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:14px;
+      align-items:start;
+    }
+    .form{padding:16px}
+    .field{margin-bottom:12px}
+    label{
+      display:block;
+      font-size:.9rem;
+      color: var(--muted);
+      margin-bottom:6px;
+      font-weight:600;
+    }
+    input, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.22);
+      color: var(--text);
+      outline:none;
+    }
+    input:focus, textarea:focus{
+      border-color: rgba(110,231,255,.35);
+      box-shadow: 0 0 0 3px rgba(110,231,255,.10);
+    }
+    textarea{resize: vertical; min-height: 140px}
+    .form-hint{
+      margin:10px 0 0;
+      color: var(--muted);
+      font-size:.92rem;
+    }
+    code{
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+      padding:2px 6px;
+      border-radius: 8px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size:.92em;
+    }
+
+    .contact-card{padding:16px}
+    .contact-card h3{margin:0 0 10px}
+    .contact-item{
+      padding:10px 12px;
+      border-radius: 14px;
+      background: rgba(0,0,0,.18);
+      border: 1px solid rgba(255,255,255,.06);
+      margin-bottom:10px;
+    }
+    .contact-label{color:var(--muted); font-size:.86rem; margin-bottom:4px}
+    .contact-value{font-weight:800}
+    .socials{display:flex; flex-wrap:wrap; gap:8px; margin-top: 6px}
+    .pill{
+      display:inline-flex;
+      padding:8px 10px;
+      border-radius: 999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      font-weight:700;
+      font-size:.9rem;
+    }
+
+    /* Footer */
+    footer{
+      padding: 24px 0 40px;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-inner{
+      display:flex; justify-content:space-between; align-items:flex-start;
+      gap:14px; flex-wrap:wrap;
+    }
+    .footer-small{font-size:.92rem}
+    .top-link{
+      display:inline-flex;
+      padding:10px 12px;
+      border-radius: 14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      font-weight:800;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-inner{grid-template-columns: 1fr}
+      .grid-3{grid-template-columns: 1fr}
+      .grid-contact{grid-template-columns: 1fr}
+      .grid-2{grid-template-columns: 1fr}
+    }
+    @media (max-width: 760px){
+      .nav-toggle{display:inline-flex}
+      .nav-menu{
+        display:none;
+        position:absolute;
+        right:20px; top:68px;
+        flex-direction:column;
+        gap:8px;
+        padding:10px;
+        border-radius: 16px;
+        border:1px solid var(--line);
+        background: rgba(11,18,32,.92);
+        box-shadow: var(--shadow);
+        min-width: 220px;
+      }
+      .nav-menu.open{display:flex}
+      .nav-menu a{width:100%}
+      .brand-tagline{display:none}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Retour en haut">
+        <!-- ✅ Mets ton logo ici : remplace le src par ton fichier -->
+        <!-- ex: src="logo.png" si ton logo est dans le même dossier -->
+        <img class="brand-logo" src="assets/logo.png" alt="Logo PontNordSudBelgique" />
+        <div class="brand-text">
+          <div class="brand-name">PontNordSudBelgique</div>
+          <div class="brand-tagline">Entrepreneuriat • Pont Nord–Sud • Sensibilisation</div>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Navigation principale">
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="sr-only">Ouvrir le menu</span>
+        </button>
+
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#missions">Missions</a></li>
+          <li><a href="#membres">Membres</a></li>
+          <li><a href="#contact">Nous contacter</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <h1>Agir ici et en Afrique, concrètement.</h1>
+          <p class="lead">
+            PontNordSudBelgique soutient l’entrepreneuriat de la diaspora subsaharienne,
+            crée des ponts entre porteurs de projets au Nord et au Sud, et contribue de manière
+            opérationnelle et durable à la sensibilisation aux dangers de l’immigration clandestine.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#contact">Soutenir / Contacter</a>
+            <a class="btn ghost" href="#missions">Découvrir nos missions</a>
+          </div>
+
+          <div class="hero-badges">
+            <span class="badge">ASBL</span>
+            <span class="badge">Belgique & Afrique</span>
+            <span class="badge">Accompagnement de projets</span>
+          </div>
+        </div>
+
+        <aside class="hero-card panel" aria-label="Informations rapides">
+          <h2 class="card-title">Infos pratiques</h2>
+          <dl class="kv">
+            <div>
+              <dt>Siège</dt>
+              <dd>Exemple : Bruxelles / Namur (à modifier)</dd>
+            </div>
+            <div>
+              <dt>Email</dt>
+              <dd><a href="mailto:contact@pontnordsudbelgique.be">contact@pontnordsudbelgique.be</a></dd>
+            </div>
+            <div>
+              <dt>Téléphone</dt>
+              <dd><a href="tel:+32470000000">+32 470 00 00 00 (exemple)</a></dd>
+            </div>
+          </dl>
+
+          <div class="card-note">
+            <strong>Tout est modifiable :</strong> textes, membres, contacts, liens.
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Missions -->
+    <section class="section" id="missions">
+      <div class="container">
+        <div class="section-head">
+          <h2>Missions</h2>
+          <p>
+            Basé sur l’Art. 3 — But de l’association (tu peux remplacer/adapter le texte).
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="panel pad">
+            <h3>1) Soutien à l’entrepreneuriat (ici & en Afrique)</h3>
+            <p>
+              Offrir un service continu de guidance et d’appui technique, du développement à la réalisation
+              du projet. Accompagner les migrants souhaitant retourner en Afrique subsaharienne : préparation
+              psychosociale, mûrissement et matérialisation du projet.
+            </p>
+            <ul class="bullets">
+              <li>Santé, éducation, élevage familial</li>
+              <li>Agriculture sylvo-pastorale, agroforesterie</li>
+              <li>Artisanat, écoconstruction, environnement</li>
+            </ul>
+          </article>
+
+          <article class="panel pad">
+            <h3>2) Sensibilisation aux dangers de la migration clandestine</h3>
+            <p>
+              Promouvoir des campagnes de sensibilisation et produire des supports de communication adaptés
+              et performants. Valoriser l’entrepreneuriat des jeunes comme alternative durable.
+            </p>
+            <ul class="bullets">
+              <li>Campagnes locales & actions terrain</li>
+              <li>Supports pédagogiques & médias</li>
+              <li>Programmes jeunesse</li>
+            </ul>
+          </article>
+
+          <article class="panel pad">
+            <h3>3) Formation, orientation & appui au financement</h3>
+            <p>
+              Former, orienter et appuyer la recherche de financement pour soutenir les projets d’entrepreneuriat
+              et accompagner celles et ceux qui les portent.
+            </p>
+            <ul class="bullets">
+              <li>Orientation & coaching</li>
+              <li>Montage de dossiers</li>
+              <li>Partenariats & réseaux</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="callout">
+          <p style="margin:0;">
+            <strong>Public cible :</strong> l’organe d’administration peut décider d’élargir son public cible
+            à d’autres catégories socialement vulnérables.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Membres -->
+    <section class="section alt" id="membres">
+      <div class="container">
+        <div class="section-head">
+          <h2>Membres</h2>
+          <p>Exemples : remplace noms, rôles, emails, liens (et ajoute d’autres personnes si besoin).</p>
+        </div>
+
+        <div class="grid-2">
+          <article class="member">
+            <div class="avatar" aria-hidden="true">PN</div>
+            <div class="member-body">
+              <h3>Prénom NOM</h3>
+              <p class="role">Président·e (exemple)</p>
+              <p>
+                Courte bio (exemple) : coordination générale, partenariats, accompagnement de projets et
+                animation du réseau Nord–Sud.
+              </p>
+              <div class="member-links">
+                <a href="mailto:prenom.nom@pontnordsudbelgique.be">Email</a>
+                <span class="dot">•</span>
+                <a href="#" aria-label="Lien LinkedIn (exemple)">LinkedIn</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="member">
+            <div class="avatar" aria-hidden="true">NS</div>
+            <div class="member-body">
+              <h3>Prénom NOM</h3>
+              <p class="role">Secrétaire / Trésorier·e (exemple)</p>
+              <p>
+                Courte bio (exemple) : gestion administrative, suivi financier, communication et aide au
+                montage de dossiers de financement.
+              </p>
+              <div class="member-links">
+                <a href="mailto:prenom.nom@pontnordsudbelgique.be">Email</a>
+                <span class="dot">•</span>
+                <a href="#" aria-label="Lien Facebook (exemple)">Facebook</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-head">
+          <h2>Nous contacter</h2>
+          <p>Formulaire simple (ouvre un email) + coordonnées (exemples modifiables).</p>
+        </div>
+
+        <div class="grid-contact">
+          <form class="form panel" id="contactForm">
+            <div class="field">
+              <label for="name">Nom</label>
+              <input id="name" name="name" type="text" autocomplete="name" placeholder="Ex. Marie Dupont" required />
+            </div>
+
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="exemple@mail.com" required />
+            </div>
+
+            <div class="field">
+              <label for="subject">Sujet</label>
+              <input id="subject" name="subject" type="text" placeholder="Partenariat, projet, don..." required />
+            </div>
+
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="6" placeholder="Écris ton message ici..." required></textarea>
+            </div>
+
+            <button class="btn primary" type="submit">Envoyer</button>
+
+            <p class="form-hint">
+              Ce formulaire ouvre ton application email (modifiable dans le JS en bas du fichier).
+            </p>
+          </form>
+
+          <aside class="panel contact-card">
+            <h3>Coordonnées</h3>
+
+            <div class="contact-item">
+              <div class="contact-label">Email</div>
+              <div class="contact-value">
+                <a href="mailto:contact@pontnordsudbelgique.be">contact@pontnordsudbelgique.be</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-label">Téléphone</div>
+              <div class="contact-value">
+                <a href="tel:+32470000000">+32 470 00 00 00</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-label">Adresse</div>
+              <div class="contact-value">
+                Rue Exemple 12, 1000 Bruxelles (à modifier)
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-label">Réseaux sociaux</div>
+              <div class="socials">
+                <a class="pill" href="#">Facebook</a>
+                <a class="pill" href="#">Instagram</a>
+                <a class="pill" href="#">LinkedIn</a>
+              </div>
+            </div>
+
+            <div class="card-note" style="margin-top:12px">
+              <strong>Logo :</strong> remplace <code>assets/logo.png</code> par ton fichier (ou change le <code>src</code>).
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <div style="font-weight:800;">PontNordSudBelgique</div>
+        <div class="footer-small">© <span id="year"></span> — ASBL. Tous droits réservés (exemple).</div>
+        <div class="footer-small" style="margin-top:6px;">
+          Numéro d’entreprise / BCE : <strong>BE0.000.000.000</strong> (exemple à modifier)
+        </div>
+      </div>
+
+      <a class="top-link" href="#top">↑ Retour en haut</a>
+    </div>
+  </footer>
+
+  <script>
+    // Menu mobile
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    navToggle?.addEventListener('click', () => {
+      const isOpen = navMenu.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // Ferme le menu quand on clique un lien (mobile)
+    navMenu?.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Année automatique
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Formulaire -> ouvre un email (mailto)
+    // ✅ Modifie ici l’adresse de réception si besoin
+    const TO_EMAIL = "contact@pontnordsudbelgique.be";
+
+    const contactForm = document.getElementById('contactForm');
+    contactForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      const fullSubject = `[PontNordSudBelgique] ${subject}`;
+      const body =
+`Nom: ${name}
+Email: ${email}
+
+Message:
+${message}
+`;
+
+      const mailto = `mailto:${encodeURIComponent(TO_EMAIL)}?subject=${encodeURIComponent(fullSubject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailto;
+    });
+  </script>
+</body>
+</html>
